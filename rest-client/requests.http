@@ -1,5 +1,5 @@
 @baseurl = http://localhost:3000 
-
+@token = {{authLogin.response.body.accessToken}}
 # Não retorna nada, pq apaguei a rota
 GET {{baseurl}}/outra-rota 
 
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 # @name readOneUser
 GET {{baseurl}}/user/123
-Content-Type: application/json
+Authorization: Bearer {{token}}
 
 
 ### Create user
