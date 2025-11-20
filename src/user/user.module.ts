@@ -9,5 +9,6 @@ import { CommomModule } from 'src/common/commom.module';
   imports: [TypeOrmModule.forFeature([User]), CommomModule],
   providers: [UserService],
   controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}

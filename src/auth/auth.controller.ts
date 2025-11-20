@@ -8,6 +8,6 @@ export class AuthController {
 
   @Post('login')
   login(@Body() body: LoginDto) {
-    return this.authService.doLogin(body);
+    return this.authService.login(body);
   }
 }

@@ -13,7 +13,6 @@ export class UserService {
   ) {}
 
   async create(dto: CreateUserDto) {
-    // email precisa ser unico
     const exists = await this.userRepository.exists({
       where: {
         email: dto.email,
@@ -23,17 +22,23 @@ export class UserService {
     if (exists) {
       throw new ConflictException('Já existe um usuário com este e-mail.');
     }
-    // precisa fazer o hash de senha
     const hashedPassword = await this.hashingService.hash(dto.password);
     const newUser: CreateUserDto = {
       email: dto.email,
       name: dto.name,
       password: hashedPassword,
     };
-    // salvar na base de dados
 
     const created = await this.userRepository.save(newUser);
 
     return created;
+  }
+
+  findByEmail(email: string) {
+    return this.userRepository.findOneBy({ email });
+  }
+
+  save(user: User) {
+    return this.userRepository.save(user);
   }
 }
