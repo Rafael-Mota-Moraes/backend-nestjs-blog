@@ -9,4 +9,9 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('outra-rota')
+  getOutraRota(): string {
+    return this.appService.getOutraRota();
+  }
 }
