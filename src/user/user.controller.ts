@@ -1,24 +1,34 @@
 import {
   BadRequestException,
+  Body,
   Controller,
   Get,
   Param,
   ParseIntPipe,
+  Post,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CustomParseIntPipe } from 'src/common/pipes/custom-parse-int-pipe.pipe';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly confiService: ConfigService) {}
+  constructor(
+    private readonly confiService: ConfigService,
+    private readonly userService: UserService,
+  ) {}
 
   @Get(':id')
   findOne(
     @Param('id', CustomParseIntPipe)
     id: number,
   ) {
-    console.log(process.env.TESTE);
-    console.log(this.confiService.getOrThrow('TESTE', 'valorpadrao'));
     return `Olá do controle do user #${id}`;
+  }
+
+  @Post()
+  create(@Body() dto: CreateUserDto) {
+    return this.userService.create(dto);
   }
 }

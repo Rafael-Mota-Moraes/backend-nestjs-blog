@@ -19,3 +19,16 @@ Content-Type: application/json
 # @name readOneUser
 GET {{baseurl}}/user/123
 Content-Type: application/json
+
+
+### Create user
+
+# @name createUser
+POST {{baseurl}}/user
+Content-Type: application/json
+
+{
+  "email": "email@email.com",
+  "password": "user123",
+  "name": "user"
+}
