@@ -3,7 +3,20 @@
 # Não retorna nada, pq apaguei a rota
 GET {{baseurl}}/outra-rota 
 
-###
+### Auth login
 
-# Post para /auth/login
+# @name authLogin
 POST {{baseurl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "email@email.com",
+  "password": "user123",
+  "outra-chave": "isso não deveria estar por aqui..."
+}
+
+### Read one user
+
+# @name readOneUser
+GET {{baseurl}}/user/321
+Content-Type: application/json
