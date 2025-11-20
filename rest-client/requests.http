@@ -1,3 +1,9 @@
 @baseurl = http://localhost:3000 
 
-GET {{baseurl}}/outra-rota
+# Não retorna nada, pq apaguei a rota
+GET {{baseurl}}/outra-rota 
+
+###
+
+# Post para /auth/login
+POST {{baseurl}}/auth/login
