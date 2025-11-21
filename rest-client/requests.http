@@ -1,6 +1,7 @@
 @baseurl = http://localhost:3000 
 @token = {{authLogin.response.body.accessToken}}
-# Não retorna nada, pq apaguei a rota
+@postUuid = {{createPostOwned.response.body.id}}
+
 GET {{baseurl}}/outra-rota 
 
 ### Auth login
@@ -32,3 +33,68 @@ Content-Type: application/json
   "password": "user123",
   "name": "user"
 }
+
+### Update user
+
+# @name updateUser
+PATCH  {{baseurl}}/user/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "email": "email@email.com",
+  "name": "user"
+}
+
+
+### Update user password
+
+# @name createUserPassword
+PATCH  {{baseurl}}/user/me/password
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "currentPassword": "user123",
+  "newPassword": "user123"
+}
+
+### Read one user
+
+# @name readOneUser
+GET  {{baseurl}}/user/me/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Delete one user 
+
+# @name readOneUser
+DELETE  {{baseurl}}/user/me/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Create post owned
+# @name createPostOwned
+POST {{baseurl}}/post/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Título do post",
+  "excerpt": "Excerto Excerto",
+  "content": "Conteúdo"
+}
+
+### Read one post owned
+# @name readOnePostOwned
+
+GET {{baseurl}}/post/me/{{postUuid}}
+Authorization:  Bearer {{token}}
+
+
+### Read one post owned
+# @name readOnePostOwned
+
+GET {{baseurl}}/post/me
+Authorization:  Bearer {{token}}
