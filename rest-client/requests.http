@@ -1,7 +1,7 @@
 @baseurl = http://localhost:3000 
 @token = {{authLogin.response.body.accessToken}}
 @postUuid = {{createPostOwned.response.body.id}}
-
+@imagePath = {{{{uploadimage.response.body.url}}
 GET {{baseurl}}/outra-rota 
 
 ### Auth login
@@ -128,4 +128,21 @@ GET {{baseurl}}/post/
 ### Read one post published
 # @name readOnePostPublic
 GET {{baseurl}}/post/titulo-do-post-j46qip
+
+### Upload image
+# @name uploadimage
+POST {{baseurl}}/upload
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----BryenFormBoundary
+
+------BryenFormBoundary
+Content-Disposition: form-data; name="file"; filename="sample.png"
+Content-Type: image/png
+
+< ../dev/images/sample.png
+------BryenFormBoundary--
+
+### Read image
+# @name readImage
+GET {{baseurl}}{{imagePath}}
 
