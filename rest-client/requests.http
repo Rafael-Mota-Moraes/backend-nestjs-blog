@@ -81,7 +81,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Título do post",
+  "title": "DELETE Título do post",
   "excerpt": "Excerto Excerto",
   "content": "Conteúdo"
 }
@@ -93,8 +93,39 @@ GET {{baseurl}}/post/me/{{postUuid}}
 Authorization:  Bearer {{token}}
 
 
-### Read one post owned
-# @name readOnePostOwned
+### Read all post owned
+# @name readAllPostOwned
 
 GET {{baseurl}}/post/me
 Authorization:  Bearer {{token}}
+
+### Update one post owned
+# @name updateOnePostOwned
+
+PATCH {{baseurl}}/post/me/{{postUuid}}
+Content-Type:  application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "NOVO - Título do post",
+  "excerpt": "NOVO - Excerto",
+  "content": "NOVO - Conteúdo",
+  "published": true
+}
+
+### Delete one post owned
+# @name deleteOnePostOwned
+
+DELETE {{baseurl}}/post/me/{{postUuid}}
+Authorization: Bearer {{token}}
+
+### Read all post published
+# @name readAllPostPublic
+GET {{baseurl}}/post/
+
+
+
+### Read one post published
+# @name readOnePostPublic
+GET {{baseurl}}/post/titulo-do-post-j46qip
+
