@@ -1,4 +1,4 @@
-@baseurl = http://localhost:3000 
+@baseurl = http://localhost:3001 
 @token = {{authLogin.response.body.accessToken}}
 @postUuid = {{createPostOwned.response.body.id}}
 @imagePath = {{{{uploadimage.response.body.url}}
