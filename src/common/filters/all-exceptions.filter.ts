@@ -21,8 +21,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const defaultMessage = 'Internal server error';
-    const defaultError = 'Internal server error';
+    const defaultMessage = 'Internal Server Error';
+    const defaultError = 'Internal Server Error';
 
     let messages: string[] = [defaultMessage];
     let errorName = defaultError;
@@ -40,7 +40,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
         if (Array.isArray(message)) {
           messages = message as string[];
         } else if (typeof message === 'string') {
-          messages[message];
+          messages = [message];
         }
 
         if (typeof error === 'string') {
